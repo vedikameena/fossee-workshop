@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../App';
+
 import './WorkshopDetailsPage.css';
 
 const WORKSHOPS = {
@@ -34,22 +34,24 @@ const WORKSHOPS = {
     ],
     tnc: 'Scilab must be installed in lab.',
   },
-
-  // keep others SAME (no need to rewrite all unless you want)
 };
 
 export default function WorkshopDetailsPage() {
   const { id } = useParams();
-  const { user } = useAuth();
   const navigate = useNavigate();
 
   const workshop = WORKSHOPS[parseInt(id)];
 
   if (!workshop) {
     return (
-      <div className="container center">
-        <h2>Not found</h2>
-        <Link to="/workshop-types" className="btn">Go back</Link>
+      <div className="container" style={{ textAlign: 'center', padding: '80px 20px' }}>
+        <h2>Workshop not found</h2>
+        <p style={{ color: 'var(--text-secondary)' }}>
+          The workshop you’re looking for doesn’t exist.
+        </p>
+        <Link to="/workshop-types" className="btn btn-outline">
+          Go back
+        </Link>
       </div>
     );
   }
@@ -58,69 +60,87 @@ export default function WorkshopDetailsPage() {
     <div className="wd-page">
       <div className="container">
 
-        {/* TOP */}
-        <div className="wd-top">
-          <button onClick={() => navigate(-1)} className="back-btn">
-            ← Back
-          </button>
+        {/* BACK BUTTON */}
+        <button onClick={() => navigate(-1)} className="btn btn-outline" style={{ marginBottom: 20 }}>
+          ← Back
+        </button>
 
-          <div className="wd-header">
-            <span className="wd-emoji">{workshop.emoji}</span>
+        {/* HEADER */}
+        <div className="card" style={{ padding: '24px', marginBottom: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+            <span style={{ fontSize: 42 }}>{workshop.emoji}</span>
+
             <div>
-              <h1>{workshop.name}</h1>
-              <p className="wd-sub">
+              <h1 style={{ marginBottom: 6 }}>
+                {workshop.name} Workshop
+              </h1>
+
+              <p style={{ color: 'var(--text-secondary)', fontSize: 14 }}>
                 {workshop.duration} day workshop • Free • IIT Bombay
               </p>
+
+              <div style={{ marginTop: 8, display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                {workshop.tags.map(tag => (
+                  <span key={tag} className="badge">
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
         {/* ABOUT */}
-        <div className="wd-card">
-          <h3>About</h3>
-          <p>{workshop.desc}</p>
+        <div className="card" style={{ padding: 20, marginBottom: 20 }}>
+          <h3 style={{ marginBottom: 10 }}>About</h3>
+          <p style={{ color: 'var(--text-secondary)' }}>
+            {workshop.desc}
+          </p>
         </div>
 
         {/* PREREQUISITES */}
-        <div className="wd-card">
-          <h3>Before you join</h3>
-          <ul>
-            {workshop.prerequisites.map(p => (
-              <li key={p}>• {p}</li>
+        <div className="card" style={{ padding: 20, marginBottom: 20 }}>
+          <h3 style={{ marginBottom: 10 }}>Before you join</h3>
+
+          <ul style={{ paddingLeft: 18, color: 'var(--text-secondary)' }}>
+            {workshop.prerequisites.map(item => (
+              <li key={item} style={{ marginBottom: 6 }}>
+                {item}
+              </li>
             ))}
           </ul>
         </div>
 
         {/* OUTLINE */}
-        <div className="wd-card">
-          <h3>What you’ll learn</h3>
+        <div className="card" style={{ padding: 20, marginBottom: 20 }}>
+          <h3 style={{ marginBottom: 10 }}>What you’ll learn</h3>
 
-          {workshop.outline.map(day => (
-            <div key={day.day} className="wd-day">
-              <strong>Day {day.day}</strong>
-              <ul>
-                {day.topics.map(t => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+            {workshop.outline.map(day => (
+              <div key={day.day}>
+                <strong style={{ color: 'var(--text-primary)' }}>
+                  Day {day.day}
+                </strong>
+
+                <ul style={{ paddingLeft: 18, color: 'var(--text-secondary)', marginTop: 6 }}>
+                  {day.topics.map(topic => (
+                    <li key={topic}>{topic}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* CTA */}
-        <div className="wd-card wd-cta">
-          {user ? (
-            <Link to="/propose" className="btn btn-primary">
-              Propose this workshop
-            </Link>
-          ) : (
-            <>
-              <p>Login to request this workshop for your college</p>
-              <Link to="/login" className="btn btn-primary">
-                Login
-              </Link>
-            </>
-          )}
+        <div className="card" style={{ padding: 20, textAlign: 'center' }}>
+          <p style={{ marginBottom: 12, color: 'var(--text-secondary)' }}>
+            Want this workshop in your college?
+          </p>
+
+          <Link to="/propose" className="btn btn-primary">
+            Propose Workshop
+          </Link>
         </div>
 
       </div>
