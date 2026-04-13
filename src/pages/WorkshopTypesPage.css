@@ -1,0 +1,70 @@
+.wt-page {
+  padding-bottom: 60px;
+}
+
+/* Header */
+.wt-header {
+  margin-bottom: 24px;
+}
+
+.wt-header h1 {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.wt-header p {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* Grid */
+.wt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+/* Card */
+.wt-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.wt-card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+}
+
+/* Content */
+.wt-emoji {
+  font-size: 26px;
+}
+
+.wt-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.wt-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Footer */
+.wt-footer {
+  margin-top: auto;
+  font-size: 13px;
+  color: var(--text-secondary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
