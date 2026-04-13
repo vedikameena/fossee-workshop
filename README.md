@@ -170,4 +170,4 @@ This is a React frontend with mocked data. To connect to the Django backend:
 
 ---
 
-*Developed for the FOSSEE Python Screening Task — UI/UX Enhancement*
+*Built as part of the FOSSEE Python Screening Task focused on improving UI/UX using React.*
