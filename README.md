@@ -1,19 +1,23 @@
 # FOSSEE Workshop Booking — React UI/UX Redesign
 
-A complete mobile-first redesign of the [FOSSEE Workshop Booking](https://github.com/FOSSEE/workshop_booking) portal using React. The original site used server-rendered Django templates with Bootstrap 3. This redesign delivers a modern, accessible, and performant single-page application.
+This project is a UI/UX redesign of the FOSSEE Workshop Booking portal built using React.  
+The original system was functional but minimal, so the goal was to improve usability, responsiveness, and overall user experience while keeping the core structure intact.
 
 ---
 
 ## Before vs After
 
-| | Before | After |
-|---|---|---|
-| **Framework** | Django templates + Bootstrap 3 | React SPA + custom CSS |
-| **Workshop list** | Static HTML table | Searchable, filterable cards + table |
-| **Propose flow** | Single dense form | Two-step wizard with T&C modal |
-| **Mobile** | Mostly broken on small screens | Mobile-first, tested at 320px–1280px |
-| **Feedback** | Minimal | Loading spinners, toasts, inline errors, empty states |
-| **Accessibility** | Partial | ARIA labels, semantic HTML, keyboard nav |
+## Before vs After
+
+**Note:** The original repository UI has been used as reference for the “Before” state.
+Screenshots were not captured during initial setup; instead, the baseline UI is taken directly from the FOSSEE provided repository.
+
+| Aspect | Before (Original) | After (My Implementation) |
+|--------|------------------|----------------------------|
+| UI/UX | Basic Bootstrap layout | Modern responsive React UI |
+| Mobile | Limited responsiveness | Fully mobile-first design |
+| Interaction | Minimal feedback | Search, filters, toasts, states |
+| Accessibility | Basic HTML | ARIA + semantic structure |
 
 ---
 
