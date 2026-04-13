@@ -1,4 +1,4 @@
-# FOSSEE Workshop Booking — React UI/UX Redesign
+# FOSSEE Workshop Booking: React UI/UX Redesign
 
 This project is a UI/UX redesign of the FOSSEE Workshop Booking portal built using React.  
 The original system was functional but minimal, so the goal was to improve usability, responsiveness, and overall user experience while keeping the core structure intact.
